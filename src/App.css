@@ -1,0 +1,169 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f2937;
+  color: white;
+  padding: 1rem;
+}
+
+header .sort-container,
+header .search-container {
+  display: flex;
+  align-items: center;
+}
+
+header label {
+  margin-right: 0.5rem;
+}
+
+header input,
+header select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+header input:focus,
+header select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* Content Layout */
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem;
+}
+
+.movie-list {
+  flex: 1;
+  max-width: 40%;
+  margin-right: 1rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  height: calc(100vh - 120px);
+}
+
+.movie-detail {
+  flex: 2;
+  max-width: 58%;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  height: calc(100vh - 120px);
+}
+
+.movie-detail img {
+  width: 150px;
+  height: 200px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.movie-detail h2 {
+  margin-bottom: 0.5rem;
+}
+
+.movie-detail p {
+  margin: 0.5rem 0;
+}
+
+.movie-detail strong {
+  color: #1f2937;
+}
+
+/* Movie List Styles */
+.movie-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.movie-list .movie-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.movie-list .movie-item:hover {
+  background-color: #f3f4f6;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-info .episode {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.movie-info .title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.extra-info {
+  text-align: right;
+}
+
+.extra-info .rating {
+  color: #f59e0b;
+  font-weight: bold;
+}
+
+.extra-info .release-date {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Empty State Styles */
+.movie-list p {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .movie-list,
+  .movie-detail {
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .movie-detail img {
+    width: 100%;
+    height: auto;
+  }
+}
