@@ -9,6 +9,7 @@ body {
 
 header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   background-color: #1f2937;
@@ -20,10 +21,12 @@ header .sort-container,
 header .search-container {
   display: flex;
   align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 header label {
   margin-right: 0.5rem;
+  font-size: 0.9rem;
 }
 
 header input,
@@ -31,7 +34,8 @@ header select {
   padding: 0.5rem;
   border-radius: 4px;
   border: 1px solid #ccc;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  max-width: 100%;
 }
 
 header input:focus,
@@ -44,35 +48,37 @@ header select:focus {
 .content {
   display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
   margin: 1rem;
 }
 
 .movie-list {
   flex: 1;
+  min-width: 300px;
   max-width: 40%;
-  margin-right: 1rem;
   background: white;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 140px);
 }
 
 .movie-detail {
   flex: 2;
+  min-width: 300px;
   max-width: 58%;
   background: white;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 140px);
 }
 
 .movie-detail img {
   width: 150px;
-  height: 200px;
+  height: auto;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
@@ -150,20 +156,94 @@ header select:focus {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .content {
+@media (max-width: 1024px) {
+  header {
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .content {
+    gap: 0.5rem;
   }
 
   .movie-list,
   .movie-detail {
     max-width: 100%;
-    margin-right: 0;
-    margin-bottom: 1rem;
+    height: auto;
+    flex-basis: 100%;
   }
 
   .movie-detail img {
     width: 100%;
     height: auto;
+  }
+
+  header .search-container,
+  header .sort-container {
+    width: 100%;
+  }
+
+  header input,
+  header select {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 0.5rem;
+  }
+
+  header label {
+    font-size: 0.8rem;
+  }
+
+  header input,
+  header select {
+    padding: 0.4rem;
+  }
+
+  .movie-item {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .movie-info .title {
+    font-size: 1rem;
+  }
+
+  .movie-info .episode {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    flex-direction: column;
+    margin: 0.5rem;
+  }
+
+  header {
+    padding: 0.5rem;
+  }
+
+  header label {
+    margin-right: 0.25rem;
+  }
+
+  .movie-list,
+  .movie-detail {
+    flex-basis: 100%;
+    height: auto;
+    padding: 0.75rem;
+  }
+
+  .movie-detail h2 {
+    font-size: 1.2rem;
+  }
+
+  .movie-detail p {
+    font-size: 0.9rem;
   }
 }

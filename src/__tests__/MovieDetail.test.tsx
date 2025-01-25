@@ -1,32 +1,42 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import MovieDetail from "../components/MovieDetail";
 
-const mockMovie = {
-  id: 1,
-  episode: 1,
+interface Movie {
+  episode_id: number;
+  title: string;
+  release_date: string;
+  opening_crawl: string;
+  director: string;
+  producer: string;
+  rating: number;
+}
+
+const mockMovie: Movie = {
+  episode_id: 1,
   title: "The Phantom Menace",
-  releaseDate: "1999-05-19",
-  description: "Turmoil has engulfed...",
+  release_date: "1999-05-19",
+  opening_crawl: "Turmoil has engulfed the Galactic Republic.",
   director: "George Lucas",
-  rating: 4,
+  producer: "Rick McCallum",
+  rating: 6.5,
 };
 
 describe("MovieDetail Component", () => {
-  test("renders movie details when a movie is selected", () => {
-    render(<MovieDetail selectedMovie={mockMovie} />);
+  it("renders movie details when movie data is provided", () => {
+    render(<MovieDetail movie={mockMovie} />);
 
     expect(screen.getByText("The Phantom Menace")).toBeInTheDocument();
-    expect(screen.getByText("Turmoil has engulfed...")).toBeInTheDocument();
-    expect(screen.getByText("Directed by: George Lucas")).toBeInTheDocument();
-    expect(screen.getByText("Release Date: 1999-05-19")).toBeInTheDocument();
+    expect(screen.getByText(/1999-05-19/)).toBeInTheDocument();
+    expect(screen.getByText("George Lucas")).toBeInTheDocument();
+    expect(screen.getByText("6.5")).toBeInTheDocument();
+    expect(screen.getByText(/Turmoil has engulfed/i)).toBeInTheDocument();
   });
 
-  test("displays placeholder when no movie is selected", () => {
-    render(<MovieDetail selectedMovie={null} />);
-
+  it("shows a placeholder message when no movie is selected", () => {
+    render(<MovieDetail movie={null} />);
     expect(
-      screen.getByText("Select a movie to see details.")
+      screen.getByText("Select a movie to see details")
     ).toBeInTheDocument();
   });
 });
